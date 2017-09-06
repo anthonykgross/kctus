@@ -1,0 +1,1 @@
+2013-05-13 20:23:07: Warning: imagepng(): Unable to open '/media/Personnel/Projets/Web/Kctus/app/../web/upload/qrcode/81461bd40caa0ca6a05d1c142d7a040f.png' for writing: No such file or directory in /media/Personnel/Projets/Web/Kctus/src/Activpik/KctusBundle/Vendor/phpqrcode/qrimage.php line 43

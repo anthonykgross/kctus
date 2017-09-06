@@ -1,0 +1,31 @@
+{% extends 'ActivpikKctusBundle::base.html.twig' %}
+
+{% block javascripts %}    
+    <script>
+        var key         = '{{key}}';
+        var iosocket    = io('{{serverio}}');
+        var json        = '{{json|replace({"\'": "\\\'"})|raw}}';
+    </script>
+    <script type="text/javascript">
+        $(function () {
+            var obj = JSON.parse(json);
+            if (iosocket) {
+                iosocket.on('connect', function () {
+                    iosocket.emit('pad.init', {key: key});
+                    $('.firePlay').on('click', function () {
+                        iosocket.emit('pad.goto.video', {key: key, to: $(this).attr('data-time')});
+                    });
+                });
+            }
+            
+            $.backstretch(obj.bg);
+            $(".show-more").css({"cursor": "pointer"}).on('click', function(){
+                var more_infos = $('#more-infos');
+            });
+        });
+    </script>
+{% endblock %}
+
+{% block contenu %}
+    {% include base_path~"/"~file~"/pad.html.twig" %}
+{% endblock %}
