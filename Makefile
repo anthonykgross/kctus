@@ -7,7 +7,7 @@ install:
 	docker-compose run kctus install
 
 debug:
-	docker run -it --rm --entrypoint=/bin/bash $(NAME):master
+	docker-compose run kctus bash
 
 run:
 	docker-compose up
